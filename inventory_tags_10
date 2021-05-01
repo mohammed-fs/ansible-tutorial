@@ -1,0 +1,11 @@
+[web_servers]
+10.1.1.11 #ubuntu
+10.1.1.12 #Ubuntu
+10.1.1.20 #centos
+[db_servers]
+10.1.1.13 #Ubuntu
+
+[file_servers]
+10.1.1.20 #CentOS
+ 
+
