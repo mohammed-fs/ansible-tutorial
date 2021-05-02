@@ -1,0 +1,46 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates (CentOS)
+    tags: always
+    dnf:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install updates (Ubuntu)
+    tags: always
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create jack user
+    tags: always
+    user:
+      name: jack
+      groups: root
+
+  - name: add ssh key for jack
+    tags: always
+    authorized_key:
+      user: jack
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOJtsj3QWcM1NaHPDU58I/V1K+++ZmADwOBh+IburxD9 ansible"
+
+  - name: add sudoers file for jack 
+    tags: always
+    copy:
+      src: sudoer_jack
+      dest: /etc/sudoers.d/jack
+      owner: root
+      group: root
+      mode: 0440 
+
+
