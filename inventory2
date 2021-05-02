@@ -1,11 +1,13 @@
 [web_servers]
 10.1.1.11 #ubuntu
-10.1.1.12 #Ubuntu
+10.1.1.20 #CentOS
 
 [db_servers]
 10.1.1.13 #Ubuntu
 
 [file_servers]
-10.1.1.20 #CentOS
+10.1.1.12 #Ubuntu
  
+[workstations]
+10.1.1.15 #Ubuntu
 
